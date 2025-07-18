@@ -2,23 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Wait... Why?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shreya.nl</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Shreya...?</h1>
-  <p>Why did you unfollow me on Instagram?</p>
-  <p>Y so random?</p>
+  <div class="container">
+    <h1>Send a Message to Shreya</h1>
+    <textarea id="messageInput" placeholder="Write something..."></textarea>
+    <button onclick="submitMessage()">Send</button>
+  </div>
 
-  <textarea id="response" placeholder="Write your answer here..."></textarea><br>
-  <button onclick="submitResponse()">Send</button>
-
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
-  <!-- Firebase config and script -->
-  <script src="firebase-config.js"></script>
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
