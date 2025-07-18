@@ -1,16 +1,24 @@
-function submitResponse() {
-  const response = document.getElementById("response").value.trim();
-  if (response === "") return alert("Please write something!");
+import { db } from './firebase-config.js';
+import {
+  collection,
+  addDoc,
+  serverTimestamp
+} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-  const timestamp = new Date().toISOString(); // Human-readable timestamp
+window.submitMessage = async function () {
+  const messageInput = document.getElementById("messageInput");
+  const message = messageInput.value.trim();
+  if (!message) return alert("Please enter a message");
 
-  db.ref("responses").push({
-    message: response,
-    time: timestamp
-  }).then(() => {
-    alert("Thank you for responding 🙏");
-    document.getElementById("response").value = "";
-  }).catch((error) => {
-    alert("Error saving response: " + error);
-  });
-}
+  try {
+    await addDoc(collection(db, "shreya_replies"), {
+      message,
+      timestamp: serverTimestamp()
+    });
+    alert("Message sent!");
+    messageInput.value = "";
+  } catch (err) {
+    console.error(err);
+    alert("Failed to send");
+  }
+};
